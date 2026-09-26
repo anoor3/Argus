@@ -1,0 +1,23 @@
+# Simulation build artifacts
+sim/build/
+*.vvp
+*.vcd
+*.fst
+*.lxt2
+*.out
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+*.egg-info/
+
+# Editor / OS
+.DS_Store
+*.swp
+.vscode/
+.idea/
+
+# Generated results (keep committed evidence under results/ explicitly)
+results/tmp/
