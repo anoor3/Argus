@@ -10,7 +10,7 @@
 
 IVERILOG ?= iverilog
 VVP      ?= vvp
-IFLAGS   ?= -g2012 -Wall -Irtl
+IFLAGS   ?= -g2012 -Wall -Irtl -Itb
 
 RTL_DIR  := rtl
 TB_DIR   := tb
