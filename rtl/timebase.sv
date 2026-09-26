@@ -32,6 +32,7 @@
 //   correlation valid. Cost is one wide adder in the primary clock domain.
 // ============================================================================
 `default_nettype none
+`include "argus_timescale.svh"
 
 module timebase #(
     parameter int WIDTH = 64
