@@ -51,7 +51,7 @@ cd host && python3 -m argus.cli run --plan plans/smoke.json --mock
 
 ## Verification
 
-- 23 RTL self-checking testbenches (`make all` or the regression script).
+- 36 RTL self-checking testbenches (`make all` or the regression script).
 - Host unit tests: `cd host && python3 -m unittest discover -s tests`.
 - Every testbench prints `TEST PASSED`/`TEST FAILED` and arms a watchdog so a
   bad run fails fast instead of hanging.
