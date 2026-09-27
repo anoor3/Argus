@@ -54,6 +54,28 @@ def load_plan(path: str) -> list:
     return doc
 
 
+VALID_OPS = {"write", "read", "expect", "check_id"}
+
+
+def validate_plan(steps: list) -> list:
+    """Return a list of human-readable problems with a plan (empty = valid).
+
+    Checks each step has a known op and the fields that op requires, so a bad
+    plan is rejected up front instead of failing mid-run.
+    """
+    problems = []
+    for i, step in enumerate(steps):
+        op = step.get("op")
+        if op not in VALID_OPS:
+            problems.append(f"step {i}: unknown op {op!r}")
+            continue
+        if op in ("write", "read", "expect") and "addr" not in step:
+            problems.append(f"step {i}: {op} requires 'addr'")
+        if op in ("write", "expect") and "data" not in step:
+            problems.append(f"step {i}: {op} requires 'data'")
+    return problems
+
+
 def run_plan(client: RegisterClient, steps: list) -> PlanResult:
     result = PlanResult()
     for i, step in enumerate(steps):
