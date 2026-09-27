@@ -1,0 +1,15 @@
+{
+  "name": "scratch_sweep",
+  "description": "Write/read-back several patterns through the SCRATCH register.",
+  "steps": [
+    { "op": "check_id" },
+    { "op": "write",  "addr": 1, "data": 0 },
+    { "op": "expect", "addr": 1, "data": 0 },
+    { "op": "write",  "addr": 1, "data": 4294967295 },
+    { "op": "expect", "addr": 1, "data": 4294967295 },
+    { "op": "write",  "addr": 1, "data": 2863311530 },
+    { "op": "expect", "addr": 1, "data": 2863311530 },
+    { "op": "write",  "addr": 1, "data": 1431655765 },
+    { "op": "expect", "addr": 1, "data": 1431655765 }
+  ]
+}
