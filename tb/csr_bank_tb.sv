@@ -37,6 +37,8 @@ module csr_bank_tb;
 
     always #10 clk = ~clk;
 
+    `WATCHDOG(200000)
+
     csr_bank #(.ADDRW(ADDRW), .DW(DW)) dut (
         .clk(clk), .rst(rst),
         .wr_en(wr_en), .rd_en(rd_en), .addr(addr),

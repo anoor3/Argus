@@ -23,6 +23,8 @@ module uart_rx_tb;
 
     always #10 clk = ~clk;
 
+    `WATCHDOG(200000)
+
     uart_rx #(.CLKS_PER_BIT(CPB)) dut (
         .clk(clk), .rst(rst), .rx(rx),
         .rx_data(rx_data), .data_valid(data_valid), .frame_error(frame_error)

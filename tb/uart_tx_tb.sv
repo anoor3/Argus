@@ -24,6 +24,8 @@ module uart_tx_tb;
 
     always #10 clk = ~clk;
 
+    `WATCHDOG(200000)
+
     uart_tx #(.CLKS_PER_BIT(CPB)) dut (
         .clk(clk), .rst(rst), .start(start),
         .tx_data(tx_data), .tx(tx), .busy(busy), .done(done)

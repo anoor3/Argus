@@ -26,6 +26,8 @@ module timebase_tb;
 
     always #10 clk = ~clk;  // 50 MHz
 
+    `WATCHDOG(100000)
+
     timebase #(.WIDTH(W)) dut (
         .clk(clk), .rst(rst), .en(en),
         .time_now(time_now), .tick(tick)
