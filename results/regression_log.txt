@@ -5,25 +5,38 @@
 --- RTL testbenches (iverilog) ---
   PASS  adc_bridge
   PASS  argus_core
+  PASS  argus_demo
   PASS  argus_top
+  PASS  async_fifo_edge
   PASS  async_fifo
   PASS  capture_subsystem
   PASS  cdc_sync
+  PASS  clock_monitor_edge
   PASS  clock_monitor
   PASS  command_router
+  PASS  csr_bank_edge
   PASS  csr_bank
   PASS  event_logger
+  PASS  fault_controller_edge
   PASS  fault_controller
+  PASS  gpio_monitor_edge
   PASS  gpio_monitor
   PASS  i2c_master
+  PASS  reset_monitor_edge
   PASS  reset_monitor
+  PASS  safety_interlock_edge
   PASS  safety_interlock
+  PASS  spi_master_edge
   PASS  spi_master
+  PASS  test_sequencer_edge
   PASS  test_sequencer
   PASS  timebase
+  PASS  trace_buffer_edge
   PASS  trace_buffer
+  PASS  trigger_engine_edge
   PASS  trigger_engine
   PASS  uart_loopback
+  PASS  uart_rx_edge
   PASS  uart_rx
   PASS  uart_tx
 
