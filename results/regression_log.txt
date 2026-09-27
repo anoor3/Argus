@@ -1,0 +1,35 @@
+==================================================
+ ARGUS REGRESSION
+==================================================
+
+--- RTL testbenches (iverilog) ---
+  PASS  adc_bridge
+  PASS  argus_core
+  PASS  argus_top
+  PASS  async_fifo
+  PASS  capture_subsystem
+  PASS  cdc_sync
+  PASS  clock_monitor
+  PASS  command_router
+  PASS  csr_bank
+  PASS  event_logger
+  PASS  fault_controller
+  PASS  gpio_monitor
+  PASS  i2c_master
+  PASS  reset_monitor
+  PASS  safety_interlock
+  PASS  spi_master
+  PASS  test_sequencer
+  PASS  timebase
+  PASS  trace_buffer
+  PASS  trigger_engine
+  PASS  uart_loopback
+  PASS  uart_rx
+  PASS  uart_tx
+
+--- Host unit tests (python3) ---
+  PASS  host unittests
+
+==================================================
+ REGRESSION RESULT: PASS
+==================================================
