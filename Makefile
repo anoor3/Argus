@@ -11,6 +11,7 @@
 IVERILOG ?= iverilog
 VVP      ?= vvp
 IFLAGS   ?= -g2012 -Wall -Irtl -Itb
+SIM_TIMEOUT ?= 15
 
 RTL_DIR  := rtl
 TB_DIR   := tb
@@ -42,14 +43,16 @@ list:
 # elaborates the top module named <name>_tb.
 $(NAMES): %: $(BUILD)/%.vvp
 	@echo "---- RUN $@ ----"; \
-	out=$$($(VVP) $(BUILD)/$@.vvp); \
+	out=$$( $(VVP) $(BUILD)/$@.vvp & p=$$!; \
+	        ( sleep $(SIM_TIMEOUT); kill $$p 2>/dev/null ) & w=$$!; \
+	        wait $$p 2>/dev/null; kill $$w 2>/dev/null ); \
 	echo "$$out"; \
 	if echo "$$out" | grep -q "TEST FAILED"; then \
 	  echo "RESULT: $@ FAILED"; exit 1; \
 	elif echo "$$out" | grep -q "TEST PASSED"; then \
 	  echo "RESULT: $@ PASSED"; \
 	else \
-	  echo "RESULT: $@ INCONCLUSIVE (no PASS/FAIL marker)"; exit 1; \
+	  echo "RESULT: $@ INCONCLUSIVE (no PASS/FAIL marker or timed out)"; exit 1; \
 	fi
 
 $(BUILD)/%.vvp: $(TB_DIR)/%_tb.sv $(wildcard $(RTL_DIR)/*.sv)
