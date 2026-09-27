@@ -28,4 +28,15 @@
     else             $display("TEST FAILED (%0d errors)", errors); \
     $finish;
 
+// Global simulation watchdog. Call `WATCHDOG(n) once in an initial block; if
+// the sim has not finished after n time units, it aborts with TEST FAILED
+// instead of hanging. Every testbench MUST arm this.
+`define WATCHDOG(limit) \
+    initial begin \
+        #(limit); \
+        $display("  FAIL: WATCHDOG timeout at %0t", $time); \
+        $display("TEST FAILED (watchdog)"); \
+        $finish; \
+    end
+
 `endif
