@@ -1,0 +1,11 @@
+{
+  "name": "smoke",
+  "description": "Basic control-plane smoke test: ID handshake and scratch RW.",
+  "steps": [
+    { "op": "check_id" },
+    { "op": "write",  "addr": 1, "data": 3735928559 },
+    { "op": "expect", "addr": 1, "data": 3735928559 },
+    { "op": "read",   "addr": 4, "name": "time_lo" },
+    { "op": "read",   "addr": 6, "name": "event_count" }
+  ]
+}
