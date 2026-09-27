@@ -161,10 +161,10 @@ event-to-trigger latency.
 
 ---
 
-## Honest status
+## Status
 
-ARGUS is **simulation-first**: all hardware is verified in the Icarus Verilog
-simulator, and the host tooling is fully tested. Figures that need a real chip —
-FPGA resource usage and post-route maximum clock speed — are deliberately marked
-**"not yet measured"** rather than guessed. They become available after a
-synthesis run on a target board. No number in this repo is invented.
+Simulation-first. All RTL is verified in the Icarus Verilog simulator and the
+Python host tooling is fully tested. Two figures require a real chip — FPGA
+resource usage and post-route maximum clock speed — and are marked
+**"not yet measured"** in the docs. They come after a synthesis and
+place-and-route run on a target board.
