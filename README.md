@@ -7,7 +7,7 @@
   ╚═╝  ╚═╝ ╚═╝  ╚═╝ ╚═════╝  ╚═════╝ ╚══════╝
 ```
 
-# ARGUS — FPGA Hardware Validation & Fault-Injection Instrument
+# ARGUS: FPGA Hardware Validation & Fault-Injection Instrument
 
 > A programmable piece of test equipment, built inside an FPGA, that **watches**,
 > **pokes**, and **safely breaks** other electronic boards to prove they work.
@@ -58,19 +58,19 @@ over a simple serial cable.
 
 ## What it can do
 
-- **👁 Observe** — GPIO, reset, and clock monitors emit timestamped events onto a
+- **👁 Observe.** GPIO, reset, and clock monitors emit timestamped events onto a
   shared 64-bit timeline, saved in a circular trace buffer that flags overflow
   instead of silently losing data.
-- **🎚 Stimulate** — SPI, I²C, and UART masters plus an ADC/sensor bridge send
+- **🎚 Stimulate.** SPI, I²C, and UART masters plus an ADC/sensor bridge send
   scripted transactions to the device under test.
-- **🧩 Sequence** — a tiny in-hardware "program" runs deterministic test steps
+- **🧩 Sequence.** A tiny in-hardware "program" runs deterministic test steps
   (`WRITE`, `READ_EXPECT`, `WAIT_EVENT`, `DELAY`, `INJECT`, `CLEAR`, `END`).
-- **⚡ Perturb (safely)** — a fault controller applies *bounded* digital faults
+- **⚡ Perturb (safely).** A fault controller applies *bounded* digital faults
   (reset pulse, bus stall, data corruption, clock gating), gated by a two-step
   arm/fire safety interlock with a hard duration cap and automatic restore.
-- **🎯 Trigger** — freezes the trace the instant a chosen event happens, keeping
+- **🎯 Trigger.** Freezes the trace the instant a chosen event happens, keeping
   a configurable window of what came after.
-- **🤖 Automate** — a dependency-free Python tool runs JSON test plans, decodes
+- **🤖 Automate.** A dependency-free Python tool runs JSON test plans, decodes
   traces, and exports JSON/CSV reports with pass/fail summaries.
 
 ---
@@ -109,7 +109,7 @@ over a simple serial cable.
 You need `iverilog` (a free Verilog simulator) and `python3`.
 
 ```bash
-# 1. Run EVERYTHING — all hardware tests + all software tests, one verdict
+# 1. Run EVERYTHING: all hardware tests + all software tests, one verdict
 ./scripts/regression.sh
 
 # 2. Run one hardware block's test on its own
@@ -124,7 +124,7 @@ cd host && python3 -m argus.cli run --plan plans/smoke.json --mock
 ## What's inside
 
 ```
-rtl/       the hardware (SystemVerilog) — one small, focused module per file
+rtl/       the hardware (SystemVerilog): one small, focused module per file
 tb/        a self-checking test for every hardware module
 host/       the laptop-side Python tool (talk to it, run plans, make reports)
 docs/       requirements, safety rules, architecture diagram, measurements
@@ -136,15 +136,15 @@ results/    saved proof that the tests pass (regression log + measurements)
 
 ## Proof it works
 
-- **36 hardware testbenches** — each prints `TEST PASSED` / `TEST FAILED` and
+- **36 hardware testbenches.** Each prints `TEST PASSED` / `TEST FAILED` and
   has a built-in watchdog so a broken test fails fast instead of hanging.
-- **32 host software tests** — `cd host && python3 -m unittest discover -s tests`.
+- **32 host software tests.** Run `cd host && python3 -m unittest discover -s tests`.
 - **One command checks all of it:** `./scripts/regression.sh` →
   `REGRESSION RESULT: PASS` (saved in [`results/regression_log.txt`](results/regression_log.txt)).
 
 Key measured/derived numbers live in
-[`results/MEASUREMENTS.md`](results/MEASUREMENTS.md) — e.g. 20 ns timestamp
-resolution, 96-bit trace records, cycle-accurate fault width, 1-cycle
+[`results/MEASUREMENTS.md`](results/MEASUREMENTS.md): for example 20 ns timestamp
+resolution, 96-bit trace records, cycle-accurate fault width, and 1-cycle
 event-to-trigger latency.
 
 ---
@@ -164,7 +164,7 @@ event-to-trigger latency.
 ## Status
 
 Simulation-first. All RTL is verified in the Icarus Verilog simulator and the
-Python host tooling is fully tested. Two figures require a real chip — FPGA
-resource usage and post-route maximum clock speed — and are marked
+Python host tooling is fully tested. Two figures require a real chip (FPGA
+resource usage and post-route maximum clock speed) and are marked
 **"not yet measured"** in the docs. They come after a synthesis and
 place-and-route run on a target board.
