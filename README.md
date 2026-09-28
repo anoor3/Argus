@@ -21,7 +21,7 @@
 
 ---
 
-## What is this, in plain English?
+## What is this?
 
 When engineers build a new circuit board, they have to test it by hand: poke it
 with wires, watch signals on a scope, and hope they can repeat what they saw.
